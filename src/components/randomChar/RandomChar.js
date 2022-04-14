@@ -54,6 +54,8 @@ class RandomChar extends Component {
             .catch(this.onError)
     }
 
+    
+
     render() {
         const {char, loading, error} = this.state;
         const errorMessage = error ? <ErrorMessage/> : null;
@@ -91,7 +93,7 @@ const View = ({char}) => {
         <div className="randomchar__block">
             <img src={thumbnail} 
 
-            style={(thumbnail === emptyImg) ? {objectFit: 'contain'} : null} 
+            style={(thumbnail === emptyImg) ? {objectFit: 'contain'} :  {objectFit: 'cover'}} 
 
             alt="Random character" className="randomchar__img"/>
             <div className="randomchar__info">
