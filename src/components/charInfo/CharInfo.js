@@ -14,7 +14,7 @@ const CharInfo = (props) => {
     
 
 
-    const {loading, error, getCharacter} = useMarvelService();
+    const {loading, error, getCharacter, clearError} = useMarvelService();
 
     const onCharLoaded = (char) => {
         setChar(char)
@@ -31,6 +31,7 @@ const CharInfo = (props) => {
             return
         }
 
+        clearError();
         getCharacter(charId)
             .then(onCharLoaded)
 
