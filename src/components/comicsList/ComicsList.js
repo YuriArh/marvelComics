@@ -13,7 +13,7 @@ const ComicsList = () => {
 
     const [comicsList, setComicsList] = useState([]);
     const [newItemLoading, setNewItemLoading] = useState(false);
-    const [offset, setOffset] = useState(210);
+    const [offset, setOffset] = useState(0);
     const [comicsEnded, setComicsEnded] = useState(false);
 
     useEffect(() => {
@@ -29,14 +29,14 @@ const ComicsList = () => {
 
     const onComicsListLoaded = (newComicsList) => {
         let ended = false;
-        if (newComicsList.length < 9) {
+        if (newComicsList.length < 8) {
             ended = true;
         }
 
         setComicsList(comicsList => [...comicsList, ...newComicsList]);
-        setNewItemLoading(newItemLoading => false);
-        setOffset(offset => offset +  9);
-        setComicsEnded(comicsEnded => ended);
+        setNewItemLoading(false);
+        setOffset(offset => offset +  8);
+        setComicsEnded(ended);
         
     }
 
@@ -49,7 +49,7 @@ const ComicsList = () => {
                 price = item.price + '$'
             }
             return (
-                <li className="comics__item">
+                <li className="comics__item" key={i}>
                     <a href="#">
                         <img src={item.thumbnail} alt={item.title} className="comics__item-img"/>
                         <div className="comics__item-name">{item.title}</div>
